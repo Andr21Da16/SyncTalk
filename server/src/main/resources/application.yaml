@@ -13,16 +13,17 @@ management:
 
 server:
   port: ${PORT:8080}
+  servlet:
+    context-path: /api/v1
+
   compression:
     enabled: true
     min-response-size: 2048
     mime-types: application/json, application/xml, text/html, text/plain
-  servlet:
-    context-path: /api/v1
 
 spring:
   application:
-    name: server
+    name: synctalk
 
   datasource:
     url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
@@ -43,35 +44,44 @@ spring:
       keepalive-time: 30000
       initialization-fail-timeout: -1
 
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
       hibernate:
-        ddl-auto: none
-      show-sql: false
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          format_sql: true
-          use_sql_comments: true
-          jdbc:
-            batch_size: 20
-            fetch_size: 20
-          order_inserts: true
-          order_updates: true
-          generate_statistics: false
-    data:
-      redis:
-        host: ${REDIS_HOST}
-        port: ${REDIS_PORT}
-        password: ${REDIS_PASSWORD:}
-        timeout: 60000
-    liquibase:
-      change-log: classpath:db/changelog/db.changelog-master.xml
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+        jdbc:
+          batch_size: 20
+          fetch_size: 20
+        order_inserts: true
+        order_updates: true
 
-dev:
-    open-api:
-      dev-url: https://synctalk-production-35bf.up.railway.app/api/v1
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
 
-JWT:
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD:}
+      timeout: 60000
+
+logging:
+  level:
+    liquibase: DEBUG
+    org.springframework.security: INFO
+
+jwt:
   secret: ${JWT_SECRET}
   expiration: 36000000
-  issuer: factus-api
+  issuer: synctalk-api
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
