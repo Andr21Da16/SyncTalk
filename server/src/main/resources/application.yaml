@@ -58,14 +58,14 @@ spring:
           order_inserts: true
           order_updates: true
           generate_statistics: false
-
-    redis:
-      host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
-      password: ${REDIS_PASSWORD:}
-      timeout: 60000
-  liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.xml
+    data:
+      redis:
+        host: ${REDIS_HOST}
+        port: ${REDIS_PORT}
+        password: ${REDIS_PASSWORD:}
+        timeout: 60000
+    liquibase:
+      change-log: classpath:db/changelog/db.changelog-master.xml
 
 dev:
     open-api:
@@ -75,7 +75,3 @@ JWT:
   secret: ${JWT_SECRET}
   expiration: 36000000
   issuer: factus-api
-
-logging:
-  level:
-    liquibase: DEBUG
