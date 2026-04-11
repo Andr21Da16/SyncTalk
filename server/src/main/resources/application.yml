@@ -64,3 +64,5 @@ spring:
         port: ${REDIS_PORT}
         password: ${REDIS_PASSWORD:}
         timeout: 60000
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
