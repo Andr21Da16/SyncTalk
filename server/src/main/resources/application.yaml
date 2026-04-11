@@ -66,3 +66,7 @@ spring:
         timeout: 60000
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
+
+dev:
+    open-api:
+      dev-url: https://synctalk-production-35bf.up.railway.app/api/v1

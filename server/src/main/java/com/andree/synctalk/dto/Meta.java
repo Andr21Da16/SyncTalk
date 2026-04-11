@@ -1,0 +1,20 @@
+package com.andree.synctalk.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class Meta {
+
+    private int page;
+    private int size;
+    private long totalElements;
+    private int totalPages;
+    private boolean first;
+    private boolean last;
+}
