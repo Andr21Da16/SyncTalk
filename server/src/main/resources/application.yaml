@@ -65,8 +65,8 @@ spring:
 
   data:
     redis:
-      host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
+      host: ${REDISHOST}
+      port: ${REDISPORT}
       password: ${REDIS_PASSWORD:}
       timeout: 60000
 
