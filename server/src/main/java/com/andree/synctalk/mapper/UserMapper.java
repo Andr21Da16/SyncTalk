@@ -13,8 +13,5 @@ public interface UserMapper {
 
     User toUser(RegisterRequest register);
 
-    @Mapping(target = "passwordHash", ignore = true)
-    @Mapping(target = "biography", ignore = true)
-    @Mapping(target = "profilePhotoUrl", ignore = true)
     UserResponse toUserResponse(User user);
 }
