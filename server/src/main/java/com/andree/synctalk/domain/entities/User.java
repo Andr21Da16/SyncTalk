@@ -3,6 +3,7 @@ package com.andree.synctalk.domain.entities;
 import com.andree.synctalk.domain.Auditable;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.UuidGenerator;
 
 
 import java.time.Instant;
@@ -18,8 +19,9 @@ public class User extends Auditable {
 
     @Id
     @Column(name = "id", nullable = false, columnDefinition = "UUID")
+    @GeneratedValue
+    @UuidGenerator
     private UUID id;
-
 
     @Column(name = "first_name", length = 120, nullable = false)
     private String firstName;
