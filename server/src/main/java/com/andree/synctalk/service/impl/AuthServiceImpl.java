@@ -29,7 +29,6 @@ public class AuthServiceImpl implements AuthService {
         }
 
         User user = userMapper.toUser(register);
-        user.setId(null);
         userRepository.save(user);
 
         return Response.<Void>builder().
