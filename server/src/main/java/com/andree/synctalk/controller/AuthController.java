@@ -2,6 +2,7 @@ package com.andree.synctalk.controller;
 
 import com.andree.synctalk.dto.Response;
 import com.andree.synctalk.dto.request.auth.RegisterRequest;
+import com.andree.synctalk.dto.response.auth.UserResponse;
 import com.andree.synctalk.service.AuthService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,8 +21,8 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/sign-up")
-    public ResponseEntity<Response<Void>> signUp(@Validated @RequestBody RegisterRequest register) {
-        Response<Void> response = authService.registerUser(register);
+    public ResponseEntity<Response<UserResponse>> signUp(@Validated @RequestBody RegisterRequest register) {
+        Response<UserResponse> response = authService.registerUser(register);
         return ResponseEntity.ok(response);
     }
 

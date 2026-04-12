@@ -15,8 +15,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RegisterRequest {
 
-
-
     @NotBlank(message = "First name must not be blank")
     private String firstName;
 
@@ -39,5 +37,4 @@ public class RegisterRequest {
     @NotBlank(message = "Password must not be blank")
     private String passwordHash;
 
-    private String biography;
 }
