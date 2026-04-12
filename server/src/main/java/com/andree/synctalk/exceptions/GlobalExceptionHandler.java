@@ -1,6 +1,7 @@
 package com.andree.synctalk.exceptions;
 
 import com.andree.synctalk.dto.Response;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -47,6 +48,17 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Response<Void>> handleDataIntegrityViolationException(DataIntegrityViolationException e, WebRequest request) {
+        return new ResponseEntity<>(
+                Response.<Void>builder().
+                        success(false).
+                        message(e.getMessage()).
+                        description(request.getDescription(false)).
+                        build(), HttpStatus.UNAUTHORIZED
+        );
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Response<Map<String, String>>> handleMethodArgumentNotValidException(MethodArgumentNotValidException e, WebRequest request) {
 
@@ -63,6 +75,7 @@ public class GlobalExceptionHandler {
                         build(), HttpStatus.INTERNAL_SERVER_ERROR
         );
     }
+
 
 
 }
