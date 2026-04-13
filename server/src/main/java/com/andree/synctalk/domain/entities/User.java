@@ -42,7 +42,7 @@ public class User extends Auditable {
     private String passwordHash;
 
     @Column(name = "biography", nullable = false)
-    private String biography = ".";
+    private String biography;
 
     @Column(name = "profile_photo_url")
     private String profilePhotoUrl;
