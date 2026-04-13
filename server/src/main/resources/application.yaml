@@ -89,3 +89,4 @@ springdoc:
 dev:
   open-api:
     dev-url: https://synctalk-production-35bf.up.railway.app/api/v1
+
